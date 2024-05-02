@@ -2,27 +2,19 @@ const Sequelize = require("sequelize");
 
 module.exports = function (sequelize) {
   return sequelize.define(
-    "Questions",
+    "Leaderboard",
     {
-      text: {
-        type: Sequelize.STRING,
-      },
-      answer1: {
-        type: Sequelize.STRING,
-      },
-      answer2: {
-        type: Sequelize.STRING,
-      },
-      answer3: {
-        type: Sequelize.STRING,
-      },
-      answer4: {
-        type: Sequelize.STRING,
-      },
-      correct_answer: {
+      id: {
         type: Sequelize.NUMBER,
+        primaryKey: true,
       },
-      difficulty: {
+      user_name: {
+        type: Sequelize.STRING,
+      },
+      user_amount: {
+        type: Sequelize.STRING,
+      },
+      used_hints_quantity: {
         type: Sequelize.NUMBER,
       },
     },
@@ -30,7 +22,7 @@ module.exports = function (sequelize) {
       timestapms: false,
       createdAt: false,
       updatedAt: false,
-      tableName: "questions",
+      tableName: "leaderboard",
     },
   );
 };

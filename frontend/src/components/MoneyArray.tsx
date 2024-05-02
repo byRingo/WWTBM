@@ -22,7 +22,7 @@ export default function MoneyArray({ moneyArray, round }: MoneyArrayProps) {
     <Money>
       {moneyArray.map((cur, id) => (
         <MoneyElement key={id} isActive={id === round}>
-          {cur} ₽
+          {cur}
         </MoneyElement>
       ))}
     </Money>

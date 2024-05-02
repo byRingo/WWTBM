@@ -10,7 +10,7 @@ const Element = styled.li<{ isActive?: boolean }>`
 `;
 
 interface MoneyElementProps {
-  children: string;
+  children: number;
   isActive: boolean;
 }
 
