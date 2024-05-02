@@ -28,6 +28,8 @@ module.exports = function (sequelize) {
     },
     {
       timestapms: false,
+      createdAt: false,
+      updatedAt: false,
       tableName: "questions",
     },
   );

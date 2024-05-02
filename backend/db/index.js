@@ -14,9 +14,20 @@ const sequelize = new Sequelize(
   },
 );
 
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection successful");
+  })
+  .catch(() => {
+    console.log("Error connection to database");
+  });
+
 const Questions = require("./Questions")(sequelize);
+const Leaderboard = require("./Leaderboard")(sequelize);
 
 module.exports = {
   sequelize: sequelize,
   Questions: Questions,
+  Leaderboard: Leaderboard,
 };

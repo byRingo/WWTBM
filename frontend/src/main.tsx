@@ -5,6 +5,7 @@ import GlobalStyles from "./styles/global.ts";
 import OpeningPage from "./pages/OpeningPage.tsx";
 import GamePage from "./pages/GamePage.tsx";
 import { UserContextProvider } from "./UserContextProvider.tsx";
+import LeaderboardPage from "./pages/LeaderboardPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/game",
     element: <GamePage />,
+  },
+  {
+    path: "/leaderboard",
+    element: <LeaderboardPage />,
   },
 ]);
 

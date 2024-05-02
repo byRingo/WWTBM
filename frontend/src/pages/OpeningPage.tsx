@@ -1,10 +1,9 @@
+import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import InputSection from "../components/InputSection.tsx";
 import { useUserContext } from "../UserContextProvider.tsx";
 import Button from "../components/Button.tsx";
-import React, { useEffect } from "react";
-import axios from "axios";
 
 const LogoImg = styled.img`
   display: block;
@@ -32,12 +31,6 @@ export default function OpeningPage() {
   const handleButtonClick = () => {
     validateSubmit();
   };
-
-  useEffect(() => {
-    axios
-      .get(" http://localhost:3000/api/v1/students")
-      .then((r) => console.log(r));
-  });
 
   return (
     <>
