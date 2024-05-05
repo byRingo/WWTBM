@@ -3,10 +3,11 @@ import styled from "styled-components";
 const ButtonComponent = styled.button`
   display: block;
   padding: 1rem;
-  margin-top: 0.3rem;
-  background: white;
+  margin-top: 2.5rem;
+  color: white;
   margin-right: auto;
   margin-left: auto;
+  background: #102958;
 `;
 
 interface ButtonProps {

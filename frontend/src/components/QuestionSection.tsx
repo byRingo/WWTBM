@@ -76,7 +76,6 @@ export default function QuestionSection({
   return (
     <>
       <QuestionWindow>{question}</QuestionWindow>
-      {console.log(userName)}
       <AnswersSection>
         <Answer onClick={onClickQuestionHandler} id={1}>
           {firstAnswer}
