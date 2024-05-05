@@ -14,7 +14,7 @@ export const moneyArray = [
   5000, 3000, 2000, 1000, 500,
 ].reverse();
 
-interface questionObject {
+export interface questionObject {
   text: string;
   answer1: string;
   answer2: string;
@@ -36,7 +36,8 @@ export default function GamePage() {
       })
       .then((r) => {
         setQuestion(r.data);
-      });
+      })
+      .catch((err) => console.log(err));
   }, [round]);
 
   return (
