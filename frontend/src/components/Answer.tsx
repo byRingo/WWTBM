@@ -18,7 +18,7 @@ const AnswerButton = styled.button`
 
 interface AnswerProps {
   children: string;
-  id: number;
+  id: string;
   onClick: (e: React.ChangeEvent<HTMLButtonElement>) => void;
 }
 
