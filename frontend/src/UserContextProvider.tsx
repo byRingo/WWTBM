@@ -1,4 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
+import {
+  AudienceHelp,
+  FiftyFifty,
+  FriendCall,
+  QuestionReplace,
+  SecondChance,
+} from "../HintsEffects.tsx";
 
 export const UserContext = createContext({});
 
@@ -22,6 +29,7 @@ type Provider = {
 export type Hint = {
   id: number;
   name: string;
+  effect: Function;
   selected: boolean;
   available: boolean;
 };
@@ -30,30 +38,35 @@ export const hintsArray = [
   {
     id: 1,
     name: "50 на 50",
+    effect: FiftyFifty,
     selected: false,
     available: true,
   },
   {
     id: 2,
     name: "Помощь зала",
+    effect: AudienceHelp,
     selected: false,
     available: true,
   },
   {
     id: 3,
     name: "Звонок другу",
+    effect: FriendCall,
     selected: false,
     available: true,
   },
   {
     id: 4,
     name: "Замена вопроса",
+    effect: QuestionReplace,
     selected: false,
     available: true,
   },
   {
     id: 5,
     name: "Второй шанс",
+    effect: SecondChance,
     selected: false,
     available: true,
   },

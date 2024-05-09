@@ -47,10 +47,10 @@ app.post("/api/v1/leaderboard", (req, res) => {
   Leaderboard.findOne({
     order: [["id", "DESC"]],
   })
-    .then((r) => (lastIndex = r.id))
+    .then((r) => (lastIndex = r?.id))
     .then(() => {
       Leaderboard.create({
-        id: lastIndex + 1,
+        id: lastIndex ? lastIndex + 1 : 1,
         user_name: req.body.user_name,
         user_amount: req.body.user_amount,
         used_hints_quantity: req.body.used_hints_quantity,

@@ -13,7 +13,7 @@ const Hint = styled.button<{ $active?: boolean }>`
 
 interface HintButtonProps {
   children: string;
-  id: number;
+  id: string;
   $active: boolean;
   onClick: (e: React.ChangeEvent<HTMLButtonElement>) => void;
 }

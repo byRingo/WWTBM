@@ -15,13 +15,27 @@ const LogoImg = styled.img`
   border-radius: 5px;
 `;
 
-const HintsButtonSection = styled.div`
+export const HintsButtonSection = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: -30rem;
   margin-left: 4rem;
   width: 9rem;
 `;
+
+const selectedHintQuantity = (hints: Hint[]) => {
+  return hints.reduce(
+    (acc, currentValue) => (currentValue.selected ? ++acc : acc),
+    0,
+  );
+};
+
+export const usedHintQuantity = (hints: Hint[]) => {
+  return hints.reduce(
+    (acc, currentValue) => (!currentValue.available ? ++acc : acc),
+    0,
+  );
+};
 
 export default function OpeningPage() {
   const navigate = useNavigate();
@@ -31,10 +45,7 @@ export default function OpeningPage() {
     setUserName(e.target.value);
   };
   const validateSubmit = () => {
-    let pickedHintQuantity = hints.reduce(
-      (acc, currentValue) => (currentValue.selected ? ++acc : acc),
-      0,
-    );
+    let pickedHintQuantity = selectedHintQuantity(hints);
     if (userName.length <= 0) {
       alert("Введите ваше имя");
     } else if (pickedHintQuantity > 3) {
@@ -73,7 +84,7 @@ export default function OpeningPage() {
           return (
             <HintButton
               key={cur.id}
-              id={cur.id}
+              id={cur.id.toString()}
               $active={cur.selected}
               onClick={handleHintClick}
             >
