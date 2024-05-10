@@ -6,6 +6,9 @@ import { moneyArray } from "../pages/GamePage.tsx";
 import Answer from "./Answer.tsx";
 import axios from "axios";
 import { usedHintQuantity } from "../pages/OpeningPage.tsx";
+import correctAnswer from "../assets/sounds/correctAnswer.mp3";
+import wrongAnswer from "../assets/sounds/wrongAnswer.mp3";
+import useSound from "use-sound";
 
 const QuestionWindow = styled.div`
   display: block;
@@ -52,11 +55,27 @@ export default function QuestionSection({
   isSecondChanceActive,
   setIsSecondChanceActive,
 }: QuestionSectionProps) {
+  const [correctAnswerSound] = useSound(correctAnswer);
+  const [wrongAnswerSound] = useSound(wrongAnswer);
   const navigate = useNavigate();
   const { userName, round, setRound, hints } = useUserContext();
 
   const onClickQuestionHandler = (e: React.ChangeEvent<HTMLButtonElement>) => {
     if (e.target.id == `question${rightAnswer}`) {
+      if (round === 14) {
+        alert("Поздравляем! Вы стали миллионером");
+        axios
+          .post("http://localhost:3000/api/v1/leaderboard", {
+            user_name: userName,
+            user_amount: 3000000,
+            used_hints_quantity: usedHintQuantity(hints),
+          })
+          .then(() => {
+            console.log("Success");
+          });
+        navigate("/leaderboard");
+      }
+      correctAnswerSound();
       setRound(round + 1);
     } else if (isSecondChanceActive) {
       (
@@ -65,6 +84,7 @@ export default function QuestionSection({
         ) as HTMLButtonElement
       ).style.display = "none";
     } else {
+      wrongAnswerSound();
       axios
         .post("http://localhost:3000/api/v1/leaderboard", {
           user_name: userName,
