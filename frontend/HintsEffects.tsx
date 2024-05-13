@@ -25,6 +25,7 @@ export function FiftyFifty(
     randomAnswer2 = randomIntFromInterval(1, 5);
   }
   let arr = [randomAnswer1, randomAnswer2];
+
   arr.map((ind) => {
     (
       document.getElementById(`question${ind}`) as HTMLButtonElement

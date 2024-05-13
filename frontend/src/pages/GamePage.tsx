@@ -8,6 +8,9 @@ import HintButton from "../components/HintButton.tsx";
 import { HintsButtonSection } from "./OpeningPage.tsx";
 import Modal from "../components/Modal.tsx";
 import { VictoryPie, VictorySharedEvents } from "victory";
+import game from "../assets/sounds/game.mp3";
+import useSound from "use-sound";
+import fiftyFifty from "../assets/sounds/fiftyFifty.mp3";
 
 const Main = styled.div`
   display: flex;
@@ -68,6 +71,8 @@ const ChartSection = styled.svg`
 
 export default function GamePage() {
   const { round, hints } = useUserContext();
+  const [gameSound, { stop }] = useSound(game);
+  const [fiftyFiftySound] = useSound(fiftyFifty);
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const [isHintUsed, setIsHintUsed] = useState<boolean>(false);
   const [question, setQuestion] = useState<questionObject>(
@@ -75,6 +80,15 @@ export default function GamePage() {
   );
   const [isSecondChanceActive, setIsSecondChanceActive] =
     useState<boolean>(false);
+
+  useEffect(() => {
+    stop();
+    gameSound();
+  }, [round]);
+
+  useEffect(() => {
+    gameSound();
+  }, [gameSound]);
 
   useEffect(() => {
     axios
@@ -168,6 +182,7 @@ export default function GamePage() {
                       cur.selected = false;
                       cur.available = false;
                       setIsHintUsed(true);
+                      fiftyFiftySound();
                     } else {
                       if (document.getElementById("modal")) {
                         document.getElementById("modal")!.textContent =
