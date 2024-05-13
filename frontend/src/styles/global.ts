@@ -8,6 +8,6 @@ export default createGlobalStyle`
         color: white;
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #020230),
         url("https://www.shtiu.ro/wp-content/uploads/2018/05/vreisa.jpg");
-        height: 940px
+        height: 100dvh
     }
 `;

@@ -74,7 +74,7 @@ export const hintsArray = [
 
 export const UserContextProvider = ({ children }: UserContextProvider) => {
   const [userName, setUserName] = useState<string>("");
-  const [round, setRound] = useState<number>(14);
+  const [round, setRound] = useState<number>(0);
   const [hints, setHints] = useState<Hint[]>(hintsArray);
 
   return (
